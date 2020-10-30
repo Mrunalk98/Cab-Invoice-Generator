@@ -59,5 +59,26 @@ namespace InvoiceCabGeneratorTest
 
             Assert.AreEqual(expectedSummary, summary);
         }
+
+        [Test]
+        public void GivenRideTypeShouldReturnInvoice()
+        {
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+
+            InvoiceSummary normal = invoiceGenerator.CalculateFare(rides);
+            InvoiceSummary expectedNormal = new InvoiceSummary(2, 30.0);
+
+
+            invoiceGenerator = new InvoiceGenerator(RideType.PREMIUM);
+            Ride[] premiumRides = { new Ride(3.0, 10), new Ride(2.0, 1) };
+
+            InvoiceSummary premium = invoiceGenerator.CalculateFare(premiumRides);
+            InvoiceSummary expectedPremium = new InvoiceSummary(2, 97.0);
+
+            Assert.AreEqual(expectedNormal, normal);
+            Assert.AreEqual(expectedPremium, premium);
+        }
+
     }
 }
