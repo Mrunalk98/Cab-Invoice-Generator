@@ -6,9 +6,9 @@ namespace CabInvoiceGenerator
 {
     public class InvoiceSummary
     {
-        private int NO_OF_RIDES;
-        private double TOTAL_FARE;
-        private double AVERAGE_FARE;
+        public int NO_OF_RIDES;
+        public double TOTAL_FARE;
+        public double AVERAGE_FARE;
 
         public InvoiceSummary(int numberOfRides, double totalFare)
         {
