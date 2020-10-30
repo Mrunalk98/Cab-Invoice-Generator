@@ -46,5 +46,18 @@ namespace InvoiceCabGeneratorTest
             Assert.AreEqual(expectedSummary.AVERAGE_FARE, summary.AVERAGE_FARE);
         }
 
+        [Test]
+        public void GivenUserIdShouldReturnInvoice()
+        {
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+
+            invoiceGenerator.AddRides("1", rides);
+
+            InvoiceSummary summary = invoiceGenerator.GetInvoiceSummary("1");
+            InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
+
+            Assert.AreEqual(expectedSummary, summary);
+        }
     }
 }
